@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sofa Collection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #6a1b9a;
+      margin-bottom: 30px;
+    }
+
+    #sofa-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .sofa-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .sofa-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .sofa-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .sofa-card h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .sofa-card p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .sofa-card button {
+      background: #6a1b9a;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sofa-card button:hover {
+      background: #8e24aa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛋 Sofa Collection</h1>
+  <div id="sofa-list"></div>
+
+  <script>
+    const sofas = [
+      { name: "Luxury Sofa", price: 500, discount: 10, image: "luxury.jpg" },
+      { name: "Classic Sofa", price: 350, discount: 0, image: "classic.jpg" },
+      { name: "Modern Sofa", price: 420, discount: 5, image: "modern.jpg" }
+    ];
+
+    const container = document.getElementById("sofa-list");
+    sofas.forEach(sofa => {
+      const finalPrice = sofa.price - (sofa.price * sofa.discount / 100);
+      container.innerHTML += `
+        <div class="sofa-card">
+          <img src="${sofa.image}" alt="${sofa.name}">
+          <h3>${sofa.name}</h3>
+          <p>Price: $${finalPrice} ${sofa.discount ? "(Discount applied)" : ""}</p>
+          <button>Add to Cart</button>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
